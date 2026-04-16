@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Saad Bin Waqas | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/script.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- Main header with navigation and theme switch -->
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="brand">
+          <span class="brand-mark">SBW</span>
+          <div>
+            <p class="brand-name">Saad Bin Waqas</p>
+            <p class="brand-tag">Aspiring Software Developer</p>
+          </div>
+        </div>
+        <div class="header-controls">
+          <nav class="site-nav" aria-label="Primary">
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#github">GitHub</a>
+            <a href="#contact">Contact</a>
+          </nav>
+          <button
+            class="theme-toggle"
+            id="theme-toggle"
+            type="button"
+            aria-pressed="false"
+            aria-label="Toggle dark mode"
+          >
+            <span class="theme-toggle-text">Theme</span>
+            <span class="theme-status" id="theme-status">Light mode</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- Intro section with the short bio and greeting -->
+      <section id="about" class="section hero">
+        <div class="container hero-grid">
+          <div>
+            <h1>Building useful, user-friendly software.</h1>
+            <p>
+              I'm Saad, a computer science student focused on turning ideas into
+              clean, practical web experiences. I enjoy learning by building,
+              especially projects that combine thoughtful design with reliable
+              code.
+            </p>
+            <p class="greeting" id="greeting" aria-live="polite">
+              Welcome to my portfolio!
+            </p>
+            <div class="hero-actions">
+              <a class="btn primary" href="#projects">View Projects</a>
+              <a class="btn ghost" href="#contact">Contact Me</a>
+            </div>
+            <p class="hero-note">
+              Start with the navigation or buttons above, use the Theme button
+              in the header to switch the page style, and scroll down to test
+              the interactive sections.
+            </p>
+            <div class="visitor-panel">
+              <h2>Personalize your visit</h2>
+              <p class="muted compact-text">
+                Save your name in this browser to show a more personal welcome
+                the next time the page is opened.
+              </p>
+              <label class="sr-only" for="visitor-name">Your name</label>
+              <input
+                id="visitor-name"
+                class="visitor-input"
+                type="text"
+                placeholder="Enter your name"
+              />
+              <div class="visitor-actions">
+                <button class="btn primary small-btn" id="save-name" type="button">
+                  Save Name
+                </button>
+                <button class="btn ghost small-btn" id="clear-name" type="button">
+                  Clear
+                </button>
+              </div>
+              <p class="visitor-feedback" id="visitor-feedback" aria-live="polite"></p>
+            </div>
+          </div>
+          <div class="hero-card">
+            <img
+              src="assets/images/profile-placeholder.svg"
+              alt="Placeholder profile illustration"
+            />
+            <ul class="quick-list">
+              <li><strong>Focus:</strong> Front-end development</li>
+              <li><strong>Interests:</strong> UI design, accessibility</li>
+              <li><strong>Tools:</strong> HTML, CSS, JavaScript</li>
+            </ul>
+            <div class="guide-card">
+              <h2>Quick guide</h2>
+              <ul class="guide-list">
+                <li>Use the header links to jump to each section.</li>
+                <li>Press the Theme button to switch between light and dark mode.</li>
+                <li>Click a project filter to show a smaller set of cards.</li>
+                <li>Submit the contact form to see validation and status feedback.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects can be filtered by category using the buttons below -->
+      <section id="projects" class="section projects">
+        <div class="container">
+          <h2>Projects</h2>
+          <p class="muted">
+            Choose a filter button to focus on one project type. The status
+            message below updates with the number of visible cards, and the sort
+            menu lets you change their order.
+          </p>
+          <div class="project-controls">
+            <div
+              class="project-filters"
+              role="group"
+              aria-label="Filter portfolio projects"
+            >
+              <button class="filter-btn active" type="button" data-filter="all">
+                All Projects
+              </button>
+              <button class="filter-btn" type="button" data-filter="frontend">
+                Front-end
+              </button>
+              <button class="filter-btn" type="button" data-filter="javascript">
+                JavaScript
+              </button>
+            </div>
+            <label class="sort-control" for="sort-projects">
+              Sort by
+              <select id="sort-projects" class="select-input">
+                <option value="newest">Newest first</option>
+                <option value="oldest">Oldest first</option>
+                <option value="title">Title A-Z</option>
+              </select>
+            </label>
+          </div>
+          <p class="filter-feedback" id="filter-feedback" aria-live="polite">
+            Showing all 3 projects sorted by newest first.
+          </p>
+          <div class="project-grid">
+            <article
+              class="project-card"
+              data-category="frontend"
+              data-year="2026"
+              data-title="Study Planner"
+            >
+              <img
+                src="assets/images/project-1.svg"
+                alt="Project one placeholder"
+                loading="lazy"
+              />
+              <div class="project-body">
+                <h3>Study Planner</h3>
+                <p class="project-meta">2026 | Front-end project</p>
+                <p>
+                  A simple planner that helps students organize weekly tasks and
+                  track deadlines with a clear, minimal layout.
+                </p>
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+              </div>
+            </article>
+            <article
+              class="project-card"
+              data-category="frontend javascript"
+              data-year="2025"
+              data-title="Recipe Finder"
+            >
+              <img
+                src="assets/images/project-2.svg"
+                alt="Project two placeholder"
+                loading="lazy"
+              />
+              <div class="project-body">
+                <h3>Recipe Finder</h3>
+                <p class="project-meta">2025 | Front-end and JavaScript</p>
+                <p>
+                  A responsive concept page that presents recipes with imagery,
+                  descriptions, and clear navigation.
+                </p>
+                <span class="tag">JavaScript</span>
+                <span class="tag">Responsive</span>
+              </div>
+            </article>
+            <article
+              class="project-card"
+              data-category="javascript"
+              data-year="2024"
+              data-title="Task Progress Tracker"
+            >
+              <img
+                src="assets/images/project-3.svg"
+                alt="Project three placeholder"
+                loading="lazy"
+              />
+              <div class="project-body">
+                <h3>Task Progress Tracker</h3>
+                <p class="project-meta">2024 | JavaScript project</p>
+                <p>
+                  A small interface concept for tracking completed tasks with
+                  simple progress updates and clear visual feedback.
+                </p>
+                <span class="tag">JavaScript</span>
+                <span class="tag">UI Feedback</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="github" class="section github-section">
+        <div class="container">
+          <h2>GitHub Activity</h2>
+          <p class="muted">
+            This section connects to the GitHub API to load repository data.
+            For now, it uses a placeholder token in the JavaScript file and can
+            be updated later with a real key if needed.
+          </p>
+          <div class="github-toolbar">
+            <button class="btn primary" id="load-repos" type="button">
+              Load GitHub Repositories
+            </button>
+            <p class="small-note">
+              Demo username: <span id="github-username">octocat</span>
+            </p>
+          </div>
+          <div
+            class="github-status"
+            id="github-status"
+            role="status"
+            aria-live="polite"
+          >
+            Press the button to load repository data.
+          </div>
+          <div class="github-grid" id="github-repo-list"></div>
+        </div>
+      </section>
+
+      <!-- Contact form uses JavaScript for validation and feedback -->
+      <section id="contact" class="section contact">
+        <div class="container contact-grid">
+          <div>
+            <h2>Contact</h2>
+            <p class="muted">
+              Want to collaborate or share feedback? Send me a quick message.
+            </p>
+            <p class="small-note">Current year: <span id="year">2026</span></p>
+          </div>
+          <form
+            class="contact-form"
+            id="contact-form"
+            aria-label="Contact form"
+            novalidate
+          >
+            <p class="form-intro">
+              All fields are required. If something is missing or incorrect, an
+              error message will appear below that field and a form message will
+              explain the next step.
+            </p>
+            <div
+              class="form-status"
+              id="form-status"
+              aria-live="polite"
+              role="status"
+            ></div>
+            <label for="name">
+              Name
+              <input
+                id="name"
+                type="text"
+                name="name"
+                required
+                placeholder="Your name"
+                aria-describedby="name-hint name-error"
+              />
+            </label>
+            <p class="field-hint" id="name-hint">
+              Enter at least 2 characters.
+            </p>
+            <p class="field-error" id="name-error"></p>
+            <label for="email">
+              Email
+              <input
+                id="email"
+                type="email"
+                name="email"
+                required
+                placeholder="you@example.com"
+                aria-describedby="email-hint email-error"
+              />
+            </label>
+            <p class="field-hint" id="email-hint">
+              Use a valid format such as you@example.com.
+            </p>
+            <p class="field-error" id="email-error"></p>
+            <label for="message">
+              Message
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                required
+                placeholder="Write your message..."
+                aria-describedby="message-hint message-error"
+              ></textarea>
+            </label>
+            <p class="field-hint" id="message-hint">
+              Write at least 10 characters so the message is clear.
+            </p>
+            <p class="field-error" id="message-error"></p>
+            <button class="btn primary" type="submit">Send Message</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- Simple footer with a quick link back to the top -->
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>Portfolio assignment 3 | Built with HTML, CSS, and JavaScript</p>
+        <a href="#about" class="back-to-top">Back to top</a>
+      </div>
+    </footer>
+  </body>
+</html>

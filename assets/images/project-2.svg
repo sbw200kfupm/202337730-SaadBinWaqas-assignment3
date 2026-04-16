@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520">
+  <rect width="800" height="520" fill="#f9f4ec"/>
+  <rect x="50" y="50" width="700" height="420" rx="28" fill="#ffffff" stroke="#1f6f6d" stroke-width="3"/>
+  <text x="90" y="140" font-family="DM Sans, Trebuchet MS, sans-serif" font-size="42" fill="#1f6f6d">
+    Project 02
+  </text>
+  <text x="90" y="200" font-family="DM Sans, Trebuchet MS, sans-serif" font-size="22" fill="#5a5a5a">
+    Placeholder image
+  </text>
+</svg>
+
