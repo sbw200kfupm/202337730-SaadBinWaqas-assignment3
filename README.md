@@ -40,8 +40,10 @@ The portfolio includes:
 ## Setup Instructions
 
 1. Clone or download this repository.
-2. Open `index.html` in any modern browser.
-3. Test the site by:
+2. Open `js/script.js`.
+3. Update `GITHUB_USERNAME` with your GitHub username if needed.
+4. Open `index.html` in any modern browser.
+5. Test the site by:
    - switching between dark mode and light mode
    - filtering and sorting projects
    - loading GitHub repositories
@@ -56,15 +58,18 @@ No build tools, package managers, or external dependencies are required.
 
 ## GitHub API Setup
 
-The GitHub section is prepared with a placeholder configuration in
-`js/script.js`.
+The GitHub section uses the public GitHub API, so a token is not required when
+loading public repository data.
 
 1. Open `js/script.js`.
-2. Find the `GITHUB_CONFIG` object.
-3. Replace the placeholder username and token with your own values when ready.
+2. Find the `GITHUB_USERNAME` constant.
+3. Replace `octocat` with your own GitHub username.
 
-The current version includes error handling so the page shows a friendly
-message if the API request fails.
+The page then requests repository data directly from:
+
+`https://api.github.com/users/{username}/repos`
+
+This keeps the setup simple and works well for public portfolio repositories.
 
 ## AI Usage Summary
 

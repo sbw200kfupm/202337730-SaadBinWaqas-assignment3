@@ -50,8 +50,8 @@ to a simpler version.
 
 - For the project section, AI helped suggest a clearer way to combine category
   filtering with sorting options and update the feedback text for the user.
-- For the GitHub section, AI helped outline a simple `fetch` based request,
-  placeholder token setup, and basic error handling for failed API calls.
+- For the GitHub section, AI helped outline a simple `fetch` based request
+  using the public API and basic error handling for failed API calls.
 - For state management, AI helped plan a small visitor name feature that stores
   a value in `localStorage` and updates the greeting on later visits.
 - For the contact form, AI helped improve both the validation rules and the
@@ -127,8 +127,8 @@ rather than a replacement for learning.
   structure and naming style.
 - Several explanations and interface messages were rewritten manually so they
   would sound clearer and fit the assignment naturally.
-- API related suggestions were kept basic, with a placeholder token and simple
-  error handling instead of a more complex setup.
+- API related suggestions were kept basic, using public repository data and
+  simple error handling instead of a more complex setup.
 - The final result was checked to ensure the student can explain the HTML, CSS,
   and JavaScript used.
 - AI was used to support learning, planning, and editing, not to avoid

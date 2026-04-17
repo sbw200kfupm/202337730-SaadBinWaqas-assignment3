@@ -155,17 +155,19 @@ This shows a second example of application state beyond theme switching.
 
 ## API Integration Explanation
 
-The GitHub integration uses `fetch` to request repository data from:
+The GitHub integration requests repository data directly from:
 
 `https://api.github.com/users/{username}/repos`
 
 Implementation details:
 
-- A small configuration object stores the username and a placeholder token.
+- A small JavaScript constant stores the GitHub username.
+- The frontend uses `fetch` to request public repository data directly from the
+  GitHub API.
 - The load button starts the request only when the user wants to view the data.
 - A status message is updated before loading, after success, and after failure.
-- If the API returns an error such as an invalid token or rate limit issue, the
-  interface shows a clear fallback message.
+- If the API returns an error or the request is limited, the interface shows a
+  clear fallback message.
 - The returned JSON data is converted into simple repository cards showing the
   repository name, language, star count, description, and link.
 

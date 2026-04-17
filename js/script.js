@@ -27,10 +27,7 @@ const appState = {
   visitorName: "",
 };
 
-const GITHUB_CONFIG = {
-  username: "octocat",
-  token: "YOUR_GITHUB_TOKEN_HERE",
-};
+const GITHUB_USERNAME = "sbw200kfupm";
 
 const getTimeGreeting = () => {
   const hour = new Date().getHours();
@@ -251,6 +248,14 @@ const setGitHubStatus = (message) => {
   }
 };
 
+const loadGitHubProfile = async () => {
+  if (!githubUsernameEl) {
+    return;
+  }
+
+  githubUsernameEl.textContent = GITHUB_USERNAME;
+};
+
 const createRepoCard = (repo) => {
   const language = repo.language || "Not specified";
   const description = repo.description || "No description provided.";
@@ -278,28 +283,17 @@ const loadGitHubRepositories = async () => {
   setGitHubStatus("Loading GitHub repositories...");
   githubRepoList.innerHTML = "";
 
-  const headers = {
-    Accept: "application/vnd.github+json",
-  };
-
-  if (
-    GITHUB_CONFIG.token &&
-    GITHUB_CONFIG.token !== "YOUR_GITHUB_TOKEN_HERE"
-  ) {
-    headers.Authorization = `Bearer ${GITHUB_CONFIG.token}`;
-  }
-
   try {
     const response = await fetch(
-      `https://api.github.com/users/${GITHUB_CONFIG.username}/repos?sort=updated&per_page=4`,
-      { headers }
+      `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=4`,
+      {
+        headers: {
+          Accept: "application/vnd.github+json",
+        },
+      }
     );
 
     if (!response.ok) {
-      if (response.status === 401 || response.status === 403) {
-        throw new Error("GitHub access was rejected. Please check the token.");
-      }
-
       throw new Error("GitHub data could not be loaded at the moment.");
     }
 
@@ -326,9 +320,7 @@ const loadGitHubRepositories = async () => {
   }
 };
 
-if (githubUsernameEl) {
-  githubUsernameEl.textContent = GITHUB_CONFIG.username;
-}
+loadGitHubProfile();
 
 if (loadReposButton) {
   loadReposButton.addEventListener("click", loadGitHubRepositories);
