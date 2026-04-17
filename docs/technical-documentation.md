@@ -48,16 +48,21 @@ Selecting a filter changes which project cards are displayed. A live status
 message tells the user how many projects are currently visible. The sort menu
 can then reorder the visible cards by newest first, oldest first, or title
 order. This creates a slightly more advanced interaction because the interface
-responds to more than one user control at the same time.
+responds to more than one user control at the same time. A short note above the
+controls explains the recommended order of interaction so the section feels
+easier to understand on first use.
 
 ### GitHub API Section
 
-The GitHub section loads repository information from the GitHub API. A button
-starts the request, and the page then displays a short status message followed
-by repository cards when data is returned successfully.
+The GitHub section loads repository information from the GitHub API
+automatically when the page opens. The page displays a short status message
+while the request is loading and then shows repository cards when data is
+returned successfully.
 
 If the request fails, the page shows a friendly message instead of leaving the
-section empty. This helps the feature feel more complete and user friendly.
+section empty. A short note in the section also tells users that the cards are
+loaded automatically and that each card links to the full repository page. This
+helps the feature feel more complete and user friendly.
 
 ### Contact Form
 
@@ -65,7 +70,9 @@ The contact form provides immediate guidance. If a field is missing or invalid,
 the user sees a clear error message near the related field and an overall form
 message explaining that corrections are needed. Each field also includes a
 small hint before submission so users know the expected format in advance. If
-the form is completed correctly, a success message appears on the page.
+the form is completed correctly, a success message appears on the page. This
+reduces trial and error because users are told both what to enter and what to
+fix.
 
 ## Project Structure
 
@@ -100,7 +107,7 @@ The main JavaScript features are:
 - Automatic year update in the Contact section.
 - Smooth scrolling for internal navigation links.
 - Project filtering and sorting based on user selections.
-- GitHub repository loading with `fetch`.
+- Automatic GitHub repository loading with `fetch`.
 - Visitor name saving and clearing.
 - Theme toggling with saved preference.
 - Contact form validation and feedback messages.
@@ -118,7 +125,7 @@ The main JavaScript features are:
 The dynamic content requirement is satisfied in two ways. First, JavaScript
 updates the project section based on the selected filter and sort order.
 Second, the GitHub section fetches external data and creates repository cards
-dynamically after the user clicks the load button.
+dynamically after the page loads.
 
 ## Data Handling: Dark Mode with localStorage
 
@@ -164,7 +171,8 @@ Implementation details:
 - A small JavaScript constant stores the GitHub username.
 - The frontend uses `fetch` to request public repository data directly from the
   GitHub API.
-- The load button starts the request only when the user wants to view the data.
+- The request starts automatically when the page loads, so the section shows
+  live portfolio-related data without requiring an extra button click.
 - A status message is updated before loading, after success, and after failure.
 - If the API returns an error or the request is limited, the interface shows a
   clear fallback message.
@@ -208,6 +216,19 @@ Animations and transitions are intentionally subtle:
 - The JavaScript reuses selected DOM elements instead of querying the page
   repeatedly.
 - The page avoids large libraries or build tools, which keeps file size small.
+- The GitHub request is limited to a small set of repositories so the section
+  stays lightweight and loads faster.
+
+## Compatibility Notes
+
+- The project is intended for modern desktop and mobile browsers.
+- Core features such as layout, filtering, sorting, theme switching, and form
+  validation rely on standard HTML, CSS, and JavaScript features supported by
+  current browsers.
+- The GitHub section requires internet access because it uses a live external
+  API request.
+- If the API request is blocked or unavailable, the rest of the portfolio still
+  works and the page shows a fallback message in that section.
 
 ## Accessibility Notes
 
@@ -226,8 +247,10 @@ Manual testing was carried out by checking:
 - navigation links and smooth scrolling
 - theme switching and stored preference after reloading the page
 - project filter buttons, sort menu, and visible card count
+- guidance notes in the hero, projects, GitHub, and contact sections
 - visitor name saving and clearing
-- GitHub API loading with success and failure handling
+- GitHub API loading automatically with success and failure handling
 - contact form behavior with empty, invalid, and correct input
 - responsive layout changes on desktop, tablet, and mobile widths
+- general behavior in a modern browser after a fresh page load
 - general visual consistency and absence of broken interactions

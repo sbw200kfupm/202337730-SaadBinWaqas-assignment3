@@ -11,7 +11,6 @@ const visitorNameInput = document.querySelector("#visitor-name");
 const saveNameButton = document.querySelector("#save-name");
 const clearNameButton = document.querySelector("#clear-name");
 const visitorFeedback = document.querySelector("#visitor-feedback");
-const loadReposButton = document.querySelector("#load-repos");
 const githubStatus = document.querySelector("#github-status");
 const githubRepoList = document.querySelector("#github-repo-list");
 const githubUsernameEl = document.querySelector("#github-username");
@@ -321,10 +320,7 @@ const loadGitHubRepositories = async () => {
 };
 
 loadGitHubProfile();
-
-if (loadReposButton) {
-  loadReposButton.addEventListener("click", loadGitHubRepositories);
-}
+loadGitHubRepositories();
 
 // Reuse one message area for both success and error feedback.
 const showFormMessage = (message, type) => {

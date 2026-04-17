@@ -13,6 +13,10 @@
   - Assisted with updating the README, technical documentation, and this report
     so the written explanation matched the actual implementation.
 
+The tool was mainly used for three kinds of work: planning what features would
+best satisfy the rubric, reviewing or refining JavaScript logic, and improving
+written explanations so they were more complete and easier to follow.
+
 ## Use Cases
 
 AI support was used in a limited and supervised way for the following tasks:
@@ -30,6 +34,13 @@ In practice, AI was mainly used as a planning and revision assistant. It helped
 break the assignment into manageable parts, suggest wording for feedback
 messages, and point out areas where the site could communicate more clearly
 with users while still staying simple.
+
+The most useful part of that support was not automatic code generation by
+itself, but the ability to compare multiple possible approaches quickly. For
+example, AI was useful when deciding whether the GitHub feature should use a
+manual load action or a simpler automatic request, and when deciding how much
+written guidance should appear directly on the page without making the design
+feel crowded.
 
 ## How AI Was Used During Development
 
@@ -59,6 +70,23 @@ to a simpler version.
 - For documentation, AI helped expand short notes into full explanations of how
   each feature works and why it was included.
 
+These examples were still adjusted manually. In several cases, the first AI
+suggestion was shortened, renamed, or simplified so it matched the style of the
+existing portfolio and remained easy to explain.
+
+## How Suggestions Were Evaluated
+
+AI suggestions were not accepted one by one without review. I compared them
+against three checks before keeping them:
+
+1. The feature had to match a clear Assignment 3 requirement.
+2. The code had to stay understandable enough that I could explain it myself.
+3. The wording had to sound natural for a student portfolio rather than overly
+   formal or generic.
+
+This filtering step was important because some suggestions were technically
+correct but still not a good fit for the assignment scope or tone.
+
 ## Benefits & Challenges
 
 ### Benefits
@@ -79,6 +107,9 @@ Some specific benefits included:
   documentation better matches the implemented code and assignment rubric.
 - **Consistency checks:** AI assistance helped keep the code, behavior, and
   written documentation aligned.
+- **Decision support:** AI made it easier to compare simple alternatives, such
+  as automatic GitHub loading versus a manual button, before choosing the
+  version that fit the assignment better.
 
 Overall, AI acted as a support tool for planning, drafting, and reviewing
 implementation ideas.
@@ -118,6 +149,10 @@ rather than a replacement for learning.
   requirements and simplify them when needed.
 - Practiced documenting both technical decisions and responsible AI use.
 
+These outcomes were useful because they connected the code itself with the
+reasoning behind the implementation choices, which made the final project
+easier to explain and defend.
+
 ## Responsible Use & Modifications
 
 - AI suggestions were reviewed before use rather than copied directly into the
@@ -133,6 +168,10 @@ rather than a replacement for learning.
   and JavaScript used.
 - AI was used to support learning, planning, and editing, not to avoid
   understanding the work.
+
+In other words, AI was most useful when treated like a drafting and review
+assistant. The final choices about layout, copy, interaction flow, and feature
+scope still required manual judgment.
 
 Overall, AI tools were used as a productivity and learning aid rather than a
 replacement for understanding the code. The final portfolio still depended on

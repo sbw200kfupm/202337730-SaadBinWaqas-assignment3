@@ -110,7 +110,8 @@
               <ul class="guide-list">
                 <li>Use the header links to jump to each section.</li>
                 <li>Press the Theme button to switch between light and dark mode.</li>
-                <li>Click a project filter to show a smaller set of cards.</li>
+                <li>Use the project filters first, then use the sort menu to reorder the visible cards.</li>
+                <li>The GitHub section loads public repositories automatically when the page opens.</li>
                 <li>Submit the contact form to see validation and status feedback.</li>
               </ul>
             </div>
@@ -126,6 +127,10 @@
             Choose a filter button to focus on one project type. The status
             message below updates with the number of visible cards, and the sort
             menu lets you change their order.
+          </p>
+          <p class="section-note">
+            A simple way to use this section is to choose a category first and
+            then change the sort option if you want a different order.
           </p>
           <div class="project-controls">
             <div
@@ -230,13 +235,13 @@
         <div class="container">
           <h2>GitHub Activity</h2>
           <p class="muted">
-            This section connects to the public GitHub API to load repository
-            data. For public repositories, a token is not required.
+            This section connects to the public GitHub API to load my github repository
+            data. Feel free to browse my code!
+          </p>
+          <p class="section-note">
+            Each card includes a direct link to GitHub for more detail.
           </p>
           <div class="github-toolbar">
-            <button class="btn primary" id="load-repos" type="button">
-              Load GitHub Repositories
-            </button>
             <p class="small-note">
               GitHub username: <span id="github-username">octocat</span>
             </p>
@@ -247,7 +252,7 @@
             role="status"
             aria-live="polite"
           >
-            Press the button to load repository data.
+            Loading public repository data...
           </div>
           <div class="github-grid" id="github-repo-list"></div>
         </div>
@@ -260,6 +265,11 @@
             <h2>Contact</h2>
             <p class="muted">
               Want to collaborate or share feedback? Send me a quick message.
+            </p>
+            <p class="section-note">
+              Fill in each field, then submit once. If anything needs to be
+              corrected, the page will show both field-level and form-level
+              feedback.
             </p>
             <p class="small-note">Current year: <span id="year">2026</span></p>
           </div>

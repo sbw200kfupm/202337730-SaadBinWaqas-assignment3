@@ -1,0 +1,193 @@
+# Assignment 3️ – Advanced Functionality
+
+## **Due: Week 13 | Weight: 2%**
+
+## Objective
+
+The goal of this assignment is to strengthen your programming skills by implementing advanced features and best practices.
+In this assignment, you will:
+- Add more complex web application features
+- Integrate external APIs and services
+- Apply advanced JavaScript concepts
+- Demonstrate problem-solving and debugging skills
+
+By the end, you will have a more powerful and feature-rich portfolio application that builds on Assignments 1 and 2 and showcases your ability to handle advanced functionality and integrations.
+## Instructions
+
+### 1. Repository Setup
+
+- Create a public GitHub repository named **`id-name-assignment3`**  
+  (replace `id` with your student ID and `name` with your first and last name with no space).
+- Maintain a clear folder structure, meaningful commit history, and a well-written `README.md`.
+- Use branches if needed.
+
+- Organize your files in a simple structure like this:
+
+```
+id-name-assignment3/
+├── README.md
+├── index.html
+├── css/
+│   └── styles.css
+├── js/
+│   └── script.js
+├── assets/
+│   └── images/
+├── docs/
+│   ├── ai-usage-report.md
+│   └── technical-documentation.md
+└── .gitignore
+```
+
+### 2. API Integration
+
+Your web application must connect to at least one external API to fetch and display meaningful data related to your portfolio.
+
+Examples include:
+
+- Displaying your GitHub repositories
+- Showing current weather information
+- Fetching inspirational quotes
+- Displaying images from a public image API (e.g., Unsplash or Pexels)
+- Integrating a dynamic news feed
+
+⚡ Guideline: Handle errors properly by showing a user-friendly message if the API fails.
+
+💡 Tip: Use a simple, free API that fits your portfolio. For example, displaying your GitHub projects can make your website feel dynamic and up-to-date.
+### 3. Complex Logic
+
+Implement advanced application logic by adding features that use conditions, rules, or multiple steps. The goal is to show thoughtful programming beyond simple one-click actions.
+- Create a project list that can be both filtered and sorted (for example: “Show Web Projects” and then sort them by date).
+- Add a contact form with extra checks (for example: make sure fields are not empty, confirm the email looks valid, and only then allow submission).
+- Show different messages or sections depending on user choices (for example: if a visitor selects “Beginner,” show beginner projects; if “Advanced,” show advanced ones).
+- Add a timer or counter (for example: display how long a visitor has been on your site, or count down to an event).
+
+⚡ Guideline: Focus on clear, step-by-step logic. Even small features can feel sophisticated when they combine multiple conditions or rules.
+### 4. State Management
+
+Manage application state so your web app updates and remembers information as users interact with it.
+Examples:
+- Toggle and remember light/dark mode.
+- Simulate login/logout status.
+- Show or hide sections with buttons.
+- Store and display a visitor’s name.
+
+⚡ Guideline: Good state management makes your app consistent and reliable. Focus on simple features that demonstrate storing and updating data correctly.
+
+### 5. Performance
+
+Optimize your web application for speed and efficiency so it loads quickly and runs smoothly.
+
+- Compress or resize large images so they load faster.
+- Remove unused code, files, or images that slow things down.
+- Use efficient CSS and JavaScript (for example: avoid repeating the same code many times).
+- Test your site with tools like Lighthouse or PageSpeed Insights to check loading speed.
+
+⚡ Guideline: Focus on easy steps that reduce load time and create a smoother experience for visitors.
+
+---
+
+## 6. AI Integration
+Use at least one AI tool (e.g., GitHub Copilot, ChatGPT, Claude,...). Possible uses:  
+- Code generation, debugging, or code review  
+- Documentation support  
+- UI/UX design suggestions  
+
+### Document in `docs/ai-usage-report.md`:
+
+- **Tools Used & Use Cases**  
+  List the AI tools you used (e.g., ChatGPT, Copilot) and explain how you used each tool during the assignment.
+  - **Recommended AI Tools**
+    - GitHub Copilot → Code completion & generation  
+    - ChatGPT / Claude → Problem-solving & explanations  
+    - Cursor → AI-powered code editor  
+    - Replit → AI-assisted online IDE  
+    - AWS CodeWhisperer → AI code generation 
+
+- **Benefits & Challenges**  
+  Describe how using AI helped you and any difficulties or limitations you faced while using it.
+
+- **Learning Outcomes**  
+  Explain what you learned from using AI while completing this assignment (technical skills, concepts, or workflow improvements).
+
+- **Responsible Use & Modifications**  
+  Explain how you reviewed, modified, and improved the AI-generated suggestions to ensure correctness, originality, and academic integrity.
+
+---
+
+## 7. Code Quality
+- Code must be clean, consistent, and properly indented.
+- Organize code into clear and logical files.
+- Add comments to explain important parts of your code.
+- Remove unused code and avoid clutter.
+- Ensure there are no broken links or errors.
+
+---
+
+## 8. Documentation
+Your `README.md` should include:  
+- Project description  
+- Setup instructions (how to run locally)  
+- Short summary of AI use (detailed in `ai-usage-report.md`)  
+- Optional live deployment link (GitHub Pages, Netlify, Vercel)  
+
+---
+
+## 9. Submission Process
+1. Create a new GitHub repository for the assignment.  
+2. Develop and test all required features.  
+3. Update `README.md` and technical documentation.  
+4. Review to ensure all requirements are met.  
+5. Submit your repository link through Blackboard.  
+
+---
+
+## 10. Academic Integrity
+### Allowed
+- AI-assisted tools  
+- Peer discussion of ideas  
+- Sharing setup guides or references  
+- High-level feedback  
+
+### Not Allowed
+- Copying code from classmates  
+- Plagiarism or misrepresentation  
+- Unauthorized collaboration  
+- Submitting unmodified AI output as your own  
+
+`Always be transparent: document how you used AI or peer help, and ensure you understand your solution.`  
+
+## 11. Grading Rubric
+
+The submission will be graded out of `100 points`, divided as follows:
+
+| **Criteria** (points)        | **Excellent** (90–100%)                                      | **Very Good** (80–89%)                 | **Good** (70–79%)                         | **Acceptable** (60–69%)              | **Poor** (0–59%)                 |
+| ---------------------------- | ------------------------------------------------------------ | -------------------------------------- | ----------------------------------------- | ------------------------------------ | -------------------------------- |
+| **Technical Implementation** |                                                              |                                        |                                           |                                      |                                  |
+| Functionality (10)           | All required features fully implemented; website functional. | Most features work; minor issues.      | Some features missing/ partially working. | Few features working; major gaps.    | Features missing or site broken. |
+| Code Quality (10)            | Clean, readable, well-structured, consistently formatted.    | Mostly clean; minor inconsistencies.   | Functional but messy/ inconsistent.       | Poor structure; minimal comments.    | Disorganized or incomplete.      |
+| Performance (10)             | Efficient, optimized; loads quickly across devices.          | Mostly efficient; minor slowdowns.     | Adequate performance; noticeable delays.  | Performance issues in several areas. | Very slow/ inefficient.          |
+| Compatibility (10)           | Works seamlessly across major browsers/ devices.             | Works on most platforms; minor issues. | Works but limited compatibility.          | Many compatibility problems.         | Not compatible across platforms. |
+| **Documentation**            |                                                              |                                        |                                           |                                      |                                  |
+| README Quality (10)          | Comprehensive, professional, well-structured.                | Mostly complete; minor gaps.           | Basic README; limited details.            | Minimal README.                      | README missing/ unusable.        |
+| Setup Instructions (10)      | Easy-to-follow installation/ usage guides.                   | Clear but missing minor detail.        | Exists but not fully clear.               | Minimal/ confusing instructions.     | Missing instructions.            |
+| Technical Details (10)       | Proper technical documentation provided.                     | Mostly complete; minor gaps.           | Basic details with gaps.                  | Minimal documentation.               | No technical details.            |
+| User Experience (10)         | Clear, user-friendly guidance/ explanations.                 | Mostly clear; some gaps.               | Adequate but not user-friendly.           | Minimal focus on user clarity.       | No UX guidance.                  |
+| **AI Integration**           |                                                              |                                        |                                           |                                      |                                  |
+| Effective Use (5)            | AI tools used meaningfully and appropriately.                | AI tools used effectively; minor gaps. | AI used but not well aligned.             | Minimal/ shallow AI use.             | No AI use.                       |
+| Documentation (5)            | Clear and complete documentation of AI usage.                | Mostly clear; minor gaps.              | Exists but lacks detail.                  | Minimal documentation.               | No documentation.                |
+| Understanding (5)            | Strong comprehension of AI outputs/ adaptations.             | Good understanding; minor gaps.        | Partial understanding shown.              | Weak comprehension.                  | No understanding demonstrated.   |
+| Innovation (5)               | Creative, innovative use of AI for problem-solving.          | Some creativity and innovation.        | Limited innovation.                       | Minimal innovation.                  | No innovation.                   |
+
+## Notes
+
+- Keep this assignment simple, focus on clarity and structure, not over-design.
+- This assignment is worth 2% of your grade.
+- Use AI responsibly, your report should clearly show your learning process.
+- This foundation will expand into a professional portfolio website in later assignments.
+
+## Wrapping Up
+
+Think of these guidelines as a help guide with ideas to get you started. You don’t have to follow every example, feel free to explore and shape the web application in a way that reflects your own interests. Creativity and originality are welcome as long as the core requirements of the assignment are met.
+
+Most importantly, enjoy building, experimenting, and making the web application your own! 

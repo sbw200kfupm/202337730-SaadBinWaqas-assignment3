@@ -19,7 +19,7 @@ The portfolio includes:
 ## Interactive Features
 
 - Live project filtering and sorting in the Projects section
-- GitHub repository loading using the GitHub API
+- Automatic GitHub repository loading using the GitHub API
 - Dark mode and light mode toggle with saved preference using `localStorage`
 - Visitor name saving with `localStorage`
 - Smooth scrolling navigation for internal page links
@@ -36,6 +36,7 @@ The portfolio includes:
 - `assets/images/` - portfolio placeholder images
 - `docs/ai-usage-report.md` - detailed AI usage reflection
 - `docs/technical-documentation.md` - technical explanation of the project
+- `.gitignore` - ignores unnecessary local files
 
 ## Setup Instructions
 
@@ -46,15 +47,23 @@ The portfolio includes:
 5. Test the site by:
    - switching between dark mode and light mode
    - filtering and sorting projects
-   - loading GitHub repositories
+   - checking that GitHub repositories load automatically after opening the page
    - saving and clearing a visitor name
    - resizing the browser window
    - submitting the contact form with valid and invalid input
 
 The page includes small guidance notes to help first-time users understand how
-to interact with the main controls without needing external instructions.
+to interact with the main controls without needing external instructions. The
+project, GitHub, and form sections each include short explanations so the next
+step is clear before the user interacts with them.
 
 No build tools, package managers, or external dependencies are required.
+
+## Browser Notes
+
+The project was designed to run in a modern browser with JavaScript enabled.
+Because it uses the public GitHub API, an internet connection is needed for the
+GitHub repository section to load.
 
 ## GitHub API Setup
 
@@ -69,7 +78,10 @@ The page then requests repository data directly from:
 
 `https://api.github.com/users/{username}/repos`
 
-This keeps the setup simple and works well for public portfolio repositories.
+The repositories are fetched automatically when the page opens, which helps the
+portfolio feel more dynamic without adding extra user steps. If the request
+fails, the page shows a short error message in the GitHub section instead of
+leaving it blank.
 
 ## AI Usage Summary
 
@@ -78,6 +90,10 @@ refining JavaScript logic, and improving documentation. The suggestions were
 reviewed, simplified, and adjusted manually so the final result stayed
 appropriate for the assignment scope. Full details are in
 `docs/ai-usage-report.md`.
+
+In particular, AI support was used to refine interaction wording, improve the
+clarity of user guidance, and strengthen the written explanation of how each
+feature was implemented and reviewed.
 
 ## Deployment
 
