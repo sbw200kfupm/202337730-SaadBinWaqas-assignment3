@@ -3,9 +3,7 @@
 ## Tools Used & Use Cases
 
 - ChatGPT (Codex)
-  - Reviewed the Assignment 2 portfolio before changes were made so the new
-    version could build on the existing structure instead of becoming a
-    completely different project.
+  - Reviewed the Assignment 2 portfolio before changes were made.
   - Suggested a simple Assignment 3 feature set that stayed within plain HTML,
     CSS, and JavaScript and matched the expected level of the course.
   - Helped refine the JavaScript logic for project filtering and sorting,
