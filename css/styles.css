@@ -676,7 +676,41 @@ a {
 }
 
 @media (max-width: 600px) {
+  .header-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: start;
+  }
+
+  .brand {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .brand-mark {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+  }
+
+  .brand-name {
+    font-size: 0.95rem;
+    line-height: 1.2;
+  }
+
+  .brand-tag {
+    font-size: 0.78rem;
+    line-height: 1.2;
+  }
+
+  .header-controls {
+    display: contents;
+  }
+
   .site-nav {
+    grid-column: 1 / -1;
+    grid-row: 2;
     flex-wrap: wrap;
   }
 
@@ -689,11 +723,18 @@ a {
     flex-direction: column;
   }
 
-  .theme-toggle,
   .filter-btn,
   .small-btn {
     width: 100%;
     justify-content: center;
+  }
+
+  .theme-toggle {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: start;
+    width: auto;
+    margin: 0;
   }
 
   .footer-inner {
