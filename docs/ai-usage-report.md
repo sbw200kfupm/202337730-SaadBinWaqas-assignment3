@@ -8,6 +8,10 @@
     CSS, and JavaScript and matched the expected level of the course.
   - Helped refine the JavaScript logic for project filtering and sorting,
     visitor state saving, GitHub API loading, and form validation.
+  - Helped modernize the project for Assignment 4 by converting the static
+    behavior into a React, Next.js, and TypeScript structure.
+  - Helped set up CI/CD workflow files for type checking, linting, building,
+    and GitHub Pages deployment.
   - Assisted with updating the README, technical documentation, and this report
     so the written explanation matched the actual implementation.
 
@@ -27,6 +31,9 @@ AI support was used in a limited and supervised way for the following tasks:
   form
 - checking that the documentation clearly explains the implemented features and
   AI use
+- planning how to keep the original simple assignment structure while adding
+  the extra folders required by a modern Next.js project
+- translating DOM-based state updates into clearer React state and typed data
 
 In practice, AI was mainly used as a planning and revision assistant. It helped
 break the assignment into manageable parts, suggest wording for feedback
@@ -67,6 +74,8 @@ to a simpler version.
   wording of error messages so they sounded more helpful and specific.
 - For documentation, AI helped expand short notes into full explanations of how
   each feature works and why it was included.
+- For modernization, AI helped identify which files were needed for a small
+  Next.js App Router project and how CI/CD should validate the app.
 
 These examples were still adjusted manually. In several cases, the first AI
 suggestion was shortened, renamed, or simplified so it matched the style of the
@@ -138,6 +147,8 @@ rather than a replacement for learning.
 
 - Improved understanding of how dynamic content can be added with simple DOM
   manipulation.
+- Improved understanding of how the same dynamic behavior can be represented
+  with React state, typed data, and component rendering.
 - Reinforced how browser storage such as `localStorage` can be used for data
   handling in a static website.
 - Gained more practice using `fetch` to request and display external API data.
@@ -146,6 +157,8 @@ rather than a replacement for learning.
 - Strengthened the ability to compare AI suggestions against assignment
   requirements and simplify them when needed.
 - Practiced documenting both technical decisions and responsible AI use.
+- Practiced adding GitHub Actions workflows that check and deploy a frontend
+  project automatically.
 
 These outcomes were useful because they connected the code itself with the
 reasoning behind the implementation choices, which made the final project
@@ -156,6 +169,8 @@ easier to explain and defend.
 - AI suggestions were reviewed before use rather than copied directly into the
   project.
 - The final implementation was simplified to remain appropriate for a simple assignment.
+- The React and Next.js changes were kept small enough to explain, instead of
+  adding unnecessary libraries or complex patterns.
 - Suggested code and wording were modified to match the existing project
   structure and naming style.
 - Several explanations and interface messages were rewritten manually so they

@@ -1,0 +1,29 @@
+{
+  "name": "202337730-saadbinwaqas-assignment4",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A modern React and Next.js portfolio assignment with typed state, API integration, and CI/CD workflows.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "serve out",
+    "preview": "npm run build && serve out",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "typecheck": "tsc --noEmit",
+    "check": "npm run typecheck && npm run lint && npm run build"
+  },
+  "dependencies": {
+    "next": "^15.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "^15.0.0",
+    "serve": "^14.2.4",
+    "typescript": "^5.6.0"
+  }
+}

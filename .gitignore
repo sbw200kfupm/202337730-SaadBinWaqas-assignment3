@@ -2,4 +2,11 @@
 Thumbs.db
 node_modules/
 dist/
+.next/
+out/
+coverage/
+*.log
+.env
+.env*.local
+tsconfig.tsbuildinfo
 

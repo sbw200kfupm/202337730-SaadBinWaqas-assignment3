@@ -1,100 +1,93 @@
-# Assignment 3 - Advanced Portfolio Functionality
+# Assignment 4 - React and Next.js Portfolio
 
-This project is a beginner friendly personal portfolio website built with plain
-HTML, CSS, and JavaScript. It builds on the earlier portfolio work and adds a
-small GitHub API integration, more advanced project controls, and extra state
-management while keeping the project simple and easy to understand.
+This project modernizes the previous static portfolio into a React, Next.js,
+and TypeScript application. The original `index.html`, `css/`, and `js/` files
+are kept as a simple legacy reference, while the primary app now lives in the
+Next.js `app/`, `components/`, and `data/` folders.
 
 ## Project Description
 
 The portfolio includes:
 
-- an About section with a time based greeting
-- a Projects section with project filtering and sorting
-- a GitHub section that loads repository data from the GitHub API
-- a Contact section with client side validation and feedback
-- a dark mode and light mode toggle that remembers the user's preference with local storage
-- a visitor name feature that saves a custom welcome in the browser
+- an About section with a time-based greeting
+- project filtering and sorting powered by React state
+- a GitHub section that loads public repository data from the GitHub API
+- a Contact section with client-side validation and feedback
+- a dark mode and light mode toggle saved with `localStorage`
+- a visitor name feature saved with `localStorage`
+- CI/CD workflows for validation and GitHub Pages deployment
 
-## Interactive Features
+## Modern Stack
 
-- Live project filtering and sorting in the Projects section
-- Automatic GitHub repository loading using the GitHub API
-- Dark mode and light mode toggle with saved preference using `localStorage`
-- Visitor name saving with `localStorage`
-- Smooth scrolling navigation for internal page links
-- Hover and theme transitions for a smoother interface
-- JavaScript form validation with friendly error messages and a success message
-- Short on-page guidance so users know how to use the toggle, filters, and form
+- Next.js App Router for the application shell and static export
+- React for component-based UI and state management
+- TypeScript for typed project data, form state, and API response handling
+- CSS custom properties for responsive light and dark themes
+- GitHub Actions for CI and static deployment
 
 ## Project Structure
 
-- `README.md` - project overview and setup steps
-- `index.html` - main page structure and semantic content
-- `css/styles.css` - styling, responsive layout, and transitions
-- `js/script.js` - JavaScript interactions and validation logic
-- `assets/images/` - portfolio placeholder images
-- `docs/ai-usage-report.md` - detailed AI usage reflection
-- `docs/technical-documentation.md` - technical explanation of the project
-- `.gitignore` - ignores unnecessary local files
+- `app/` - Next.js pages, layout, and global styles
+- `components/PortfolioApp.tsx` - main interactive portfolio component
+- `data/portfolio.ts` - typed project data and GitHub username
+- `public/assets/images/` - image assets served by Next.js
+- `index.html`, `css/`, `js/` - original static version kept for reference
+- `docs/` - AI usage report and technical documentation
+- `.github/workflows/` - CI and GitHub Pages deployment workflows
+- `presentation/` - place final slides and demo video here
 
 ## Setup Instructions
 
-1. Clone or download this repository.
-2. Open `js/script.js`.
-3. Update `GITHUB_USERNAME` with your GitHub username if needed.
-4. Open `index.html` in any modern browser.
-5. Test the site by:
-   - switching between dark mode and light mode
-   - filtering and sorting projects
-   - checking that GitHub repositories load automatically after opening the page
-   - saving and clearing a visitor name
-   - resizing the browser window
-   - submitting the contact form with valid and invalid input
+1. Install Node.js 22 or newer.
+2. Install dependencies:
 
-The page includes small guidance notes to help first-time users understand how
-to interact with the main controls without needing external instructions. The
-project, GitHub, and form sections each include short explanations so the next
-step is clear before the user interacts with them.
+   ```bash
+   npm install
+   ```
 
-No build tools, package managers, or external dependencies are required.
+3. Start the development server:
 
-## Browser Notes
+   ```bash
+   npm run dev
+   ```
 
-The project was designed to run in a modern browser with JavaScript enabled.
-Because it uses the public GitHub API, an internet connection is needed for the
-GitHub repository section to load.
+4. Open the local URL shown by Next.js, usually `http://localhost:3000`.
+
+## Useful Commands
+
+```bash
+npm run dev        # start the local development server
+npm run typecheck  # run TypeScript checks
+npm run lint       # run Next.js linting
+npm run build      # create the static production build in out/
+npm run preview    # build and locally serve the static export
+npm run check      # typecheck, lint, and build
+```
 
 ## GitHub API Setup
 
-The GitHub section uses the public GitHub API, so a token is not required when
-loading public repository data.
+The GitHub section uses the public GitHub API and does not require a token for
+basic public repository data.
 
-1. Open `js/script.js`.
-2. Find the `GITHUB_USERNAME` constant.
-3. Replace `octocat` with your own GitHub username.
+To change the displayed account, update `githubUsername` in
+`data/portfolio.ts`.
 
-The page then requests repository data directly from:
+## CI/CD
 
-`https://api.github.com/users/{username}/repos`
+Two GitHub Actions workflows are included:
 
-The repositories are fetched automatically when the page opens, which helps the
-portfolio feel more dynamic without adding extra user steps. If the request
-fails, the page shows a short error message in the GitHub section instead of
-leaving it blank.
+- `CI` runs on pushes and pull requests to `main` or `master`. It installs
+  dependencies, type checks, lints, and builds the app.
+- `Deploy GitHub Pages` builds the static Next.js export and publishes the
+  `out/` folder to GitHub Pages.
+
+For GitHub Pages, enable Pages in the repository settings and choose GitHub
+Actions as the source.
 
 ## AI Usage Summary
 
-AI was used as a support tool for planning the Assignment 3 additions,
-refining JavaScript logic, and improving documentation. The suggestions were
-reviewed, simplified, and adjusted manually so the final result stayed
-appropriate for the assignment scope. Full details are in
-`docs/ai-usage-report.md`.
-
-In particular, AI support was used to refine interaction wording, improve the
-clarity of user guidance, and strengthen the written explanation of how each
-feature was implemented and reviewed.
-
-## Deployment
-
-If needed later, this project can be hosted on a static hosting platform such as GitHub Pages or on Vercel. 
+AI was used as a support tool for planning the modernization, converting the
+static portfolio behavior into React state, and updating documentation. The
+suggestions were reviewed and adjusted manually so the final project remains
+understandable and aligned with the assignment requirements. Full details are
+in `docs/ai-usage-report.md`.
