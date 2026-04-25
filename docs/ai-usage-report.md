@@ -12,6 +12,11 @@
     behavior into a React, Next.js, and TypeScript structure.
   - Helped set up CI/CD workflow files for type checking, linting, building,
     and GitHub Pages deployment.
+  - Helped evaluate and integrate a heavier visual background effect with
+    performance safeguards such as lazy loading, reduced-motion support, and
+    desktop-only rendering.
+  - Helped refactor the app from one large client component into a
+    server-rendered page with smaller client-side interaction components.
   - Assisted with updating the README, technical documentation, and this report
     so the written explanation matched the actual implementation.
 

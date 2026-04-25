@@ -15,20 +15,23 @@ The portfolio includes:
 - a Contact section with client-side validation and feedback
 - a dark mode and light mode toggle saved with `localStorage`
 - a visitor name feature saved with `localStorage`
+- an optional lazy-loaded Three.js hero background for larger screens
 - CI/CD workflows for validation and GitHub Pages deployment
 
 ## Modern Stack
 
 - Next.js App Router for the application shell and static export
-- React for component-based UI and state management
+- React for focused client components and state management
 - TypeScript for typed project data, form state, and API response handling
 - CSS custom properties for responsive light and dark themes
+- Three.js through React Three Fiber for the optional hero background effect
 - GitHub Actions for CI and static deployment
 
 ## Project Structure
 
 - `app/` - Next.js pages, layout, and global styles
-- `components/PortfolioApp.tsx` - main interactive portfolio component
+- `components/` - small client components for theme, visitor name, projects,
+  GitHub data, contact validation, and the optional Beams background
 - `data/portfolio.ts` - typed project data and GitHub username
 - `public/assets/images/` - image assets served by Next.js
 - `index.html`, `css/`, `js/` - original static version kept for reference
@@ -71,6 +74,15 @@ basic public repository data.
 
 To change the displayed account, update `githubUsername` in
 `data/portfolio.ts`.
+
+## Hero Background Toggle
+
+The Three.js hero background is lazy-loaded and only runs on larger screens
+that allow motion. To disable it without removing code, set:
+
+```bash
+NEXT_PUBLIC_ENABLE_BEAMS=false
+```
 
 ## CI/CD
 

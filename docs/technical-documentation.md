@@ -10,9 +10,11 @@ The old static files remain in the repository as a reference. The primary
 application source is:
 
 - `app/layout.tsx` for the page shell and metadata
-- `app/page.tsx` for the home route
+- `app/page.tsx` for the server-rendered home route and static page sections
 - `app/globals.css` for global styling and themes
-- `components/PortfolioApp.tsx` for interactive UI behavior
+- `components/ThemeToggle.tsx`, `VisitorGreeting.tsx`,
+  `ProjectExplorer.tsx`, `GitHubRepos.tsx`, `ContactForm.tsx`, and
+  `HeroBeams.tsx` for focused client-side behavior
 - `data/portfolio.ts` for typed project data and configuration
 
 ## Main Features
@@ -24,17 +26,28 @@ application source is:
 - GitHub repository loading from the public GitHub REST API.
 - Contact form validation with field-level and form-level feedback.
 - Responsive layout for desktop, tablet, and mobile screens.
+- Lazy-loaded hero background effect for larger screens only.
 - Static export support for GitHub Pages deployment.
+
+## Server and Client Component Structure
+
+The page is intentionally split between server-rendered content and small
+client components. Static layout, headings, explanatory text, and footer
+content are rendered by `app/page.tsx` as a server component. Only the parts
+that need browser APIs or interaction use `"use client"`.
+
+This reduces hydration work compared with making the whole page one large
+client component.
 
 ## React State Management
 
-The main component uses React state for the active UI values:
+The focused client components use React state for the active UI values:
 
-- `theme` stores the current light or dark theme.
-- `visitorName` and `visitorInput` manage the saved welcome message.
-- `activeFilter` and `sortOrder` control the project list.
-- `repositories` and `githubStatus` manage API loading state.
-- `formFields`, `fieldErrors`, and `formStatus` manage contact form behavior.
+- `ThemeToggle` stores the current light or dark theme.
+- `VisitorGreeting` manages the saved welcome message.
+- `ProjectExplorer` controls the project filter and sort order.
+- `GitHubRepos` manages repository data and API loading state.
+- `ContactForm` manages form fields, field errors, and form status.
 
 Derived values, such as the visible project list and greeting text, are
 computed with `useMemo` so the code stays clear and avoids repeated logic.
@@ -94,6 +107,13 @@ The design uses CSS variables for theme colors and keeps layout rules in
 - Project images use native lazy loading.
 - The project data is static and typed, avoiding unnecessary runtime parsing.
 - The GitHub request is limited to four repositories.
+- Static page sections are rendered as server components, while only small
+  interactive islands hydrate on the client.
+- The optional Three.js hero background is dynamically imported with server-side
+  rendering disabled, waits until the browser is idle, does not render on
+  smaller screens, does not render for reduced-motion users, and unmounts when
+  the tab is hidden. It can also be disabled with
+  `NEXT_PUBLIC_ENABLE_BEAMS=false`.
 - `next.config.mjs` uses `output: "export"` so the built site can be deployed
   as static files.
 
