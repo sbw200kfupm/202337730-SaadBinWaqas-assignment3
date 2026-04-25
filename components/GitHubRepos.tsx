@@ -52,6 +52,7 @@ export function GitHubRepos() {
       setGithubStatus("Loading GitHub repositories...");
 
       try {
+        // Keep each account independent so one failed GitHub request does not hide all projects.
         const results = await Promise.allSettled(
           githubUsernames.map(async (username) => {
             const response = await fetch(
@@ -175,6 +176,11 @@ export function GitHubRepos() {
       <p className="filter-feedback" aria-live="polite">
         Showing {filteredRepositories.length} of {repositories.length} loaded repositories.
       </p>
+      {repositories.length > 0 && filteredRepositories.length === 0 ? (
+        <p className="filter-empty" role="status">
+          No repositories match the current search and filters.
+        </p>
+      ) : null}
       <div className="github-grid">
         {filteredRepositories.map((repo) => (
           <article className="repo-card" key={repo.html_url}>

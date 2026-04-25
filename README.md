@@ -1,105 +1,152 @@
 # Assignment 4 - React and Next.js Portfolio
 
-This project modernizes the previous static portfolio into a React, Next.js,
-and TypeScript application. The original `index.html`, `css/`, and `js/` files
-are kept as a simple legacy reference, while the primary app now lives in the
-Next.js `app/`, `components/`, and `data/` folders.
+This is a modern portfolio site for Saad Bin Waqas, built with React, Next.js,
+and TypeScript. The app presents an AI/ML and full-stack developer profile,
+highlights medical imaging research, loads live GitHub projects from two
+accounts, and includes small browser-based interactions such as theme and
+visitor-name preferences.
 
-## Project Description
+The project started from an earlier static portfolio, but the main submission
+is now the Next.js application in `app/`, `components/`, and `data/`.
 
-The portfolio includes:
+## Features
 
-- an About section with a time-based greeting
-- a GitHub Projects section that loads public repository data from two GitHub accounts
-- search and filters for narrowing GitHub projects by text, account, and language
-- a Contact section with client-side validation and feedback
-- dark mode by default, with a light mode toggle saved with `localStorage`
-- a visitor name feature saved with `localStorage`
-- an optional lazy-loaded Three.js hero background for larger screens
-- CI/CD workflows for validation and GitHub Pages deployment
+- Centered hero section for an AI/ML Engineer and Full-Stack Developer profile.
+- Dark theme by default, with a saved light/dark toggle.
+- Visitor name personalization stored in `localStorage`.
+- Research section for Bone Disease Detection / Tumor Classification work.
+- Compressed research image served from `public/assets/research/`.
+- GitHub Projects section that loads repositories from `sbw200kfupm` and `sbw200`.
+- Search and filters for GitHub repositories by text, account, and language.
+- Contact form with client-side validation, field errors, and success/error status.
+- Optional lazy-loaded Three.js beam background for larger screens.
+- GitHub Actions CI and GitHub Pages deployment workflow.
 
-## Modern Stack
+## Technology Stack
 
-- Next.js App Router for the application shell and static export
-- React for focused client components and state management
-- TypeScript for typed project data, form state, and API response handling
-- CSS custom properties for responsive light and dark themes
-- Three.js through React Three Fiber for the optional hero background effect
-- GitHub Actions for CI and static deployment
+- Next.js App Router
+- React
+- TypeScript
+- CSS custom properties for theming and responsive layout
+- React Three Fiber and Three.js for the optional hero background
+- GitHub REST API for project data
+- GitHub Actions for CI/CD
 
 ## Project Structure
 
-- `app/` - Next.js pages, layout, and global styles
-- `components/` - small client components for theme, visitor name, GitHub data,
-  contact validation, and the optional Beams background
-- `data/portfolio.ts` - GitHub account configuration
-- `public/assets/images/` - image assets served by Next.js
-- `index.html`, `css/`, `js/` - original static version kept for reference
-- `docs/` - AI usage report and technical documentation
-- `.github/workflows/` - CI and GitHub Pages deployment workflows
-- `presentation/` - place final slides and demo video here
+- `app/` - Next.js routes, layout, and global CSS.
+- `components/` - focused client components for theme, visitor state, GitHub data, contact validation, and the optional Beams background.
+- `data/portfolio.ts` - GitHub account configuration.
+- `public/assets/research/` - optimized research image used by the Research section.
+- `docs/` - AI usage report and technical documentation.
+- `.github/workflows/` - CI and GitHub Pages deployment workflows.
+- `presentation/` - placeholder folder for slides and demo video.
+- `index.html`, `css/`, `js/`, and `assets/` - earlier static version kept as reference material.
 
-## Setup Instructions
+## Running Locally
 
-1. Install Node.js 22 or newer.
-2. Install dependencies:
+Install Node.js 22 or newer, then run:
 
-   ```bash
-   npm install
-   ```
+```bash
+npm install
+npm run dev
+```
 
-3. Start the development server:
+Open the local URL printed by Next.js, usually:
 
-   ```bash
-   npm run dev
-   ```
-
-4. Open the local URL shown by Next.js, usually `http://localhost:3000`.
+```text
+http://localhost:3000
+```
 
 ## Useful Commands
 
 ```bash
-npm run dev        # start the local development server
+npm run dev        # start the development server
 npm run typecheck  # run TypeScript checks
-npm run lint       # run Next.js linting
+npm run lint       # run ESLint
 npm run build      # create the static production build in out/
 npm run preview    # build and locally serve the static export
 npm run check      # typecheck, lint, and build
 ```
 
-## GitHub API Setup
+Use `npm run preview` when testing Lighthouse. Development mode is slower and
+does not represent production performance.
 
-The GitHub section uses the public GitHub API and does not require a token for
-basic public repository data.
+## Configuration
 
-To change the displayed accounts, update `githubUsernames` in
-`data/portfolio.ts`.
+GitHub accounts are configured in:
 
-## Hero Background Toggle
+```text
+data/portfolio.ts
+```
 
-The Three.js hero background is lazy-loaded and only runs on larger screens
-that allow motion. To disable it without removing code, set:
+The optional Three.js hero background is enabled by default for large screens
+that allow motion. It can be disabled without removing code:
 
 ```bash
 NEXT_PUBLIC_ENABLE_BEAMS=false
 ```
 
-## CI/CD
+In PowerShell:
 
-Two GitHub Actions workflows are included:
+```powershell
+$env:NEXT_PUBLIC_ENABLE_BEAMS="false"
+npm run build
+npm run preview
+```
 
-- `CI` runs on pushes and pull requests to `main` or `master`. It installs
-  dependencies, type checks, lints, and builds the app.
-- `Deploy GitHub Pages` builds the static Next.js export and publishes the
-  `out/` folder to GitHub Pages.
+## Image Optimization
 
-For GitHub Pages, enable Pages in the repository settings and choose GitHub
-Actions as the source.
+The research image is stored as:
+
+```text
+public/assets/research/bone-disease-detection-research.jpg
+```
+
+It was compressed before being added to the app. For future images, compress
+them before placing them in `public/`. WebP or AVIF is preferred for larger
+photos, but a small compressed JPEG is acceptable when quality is good and file
+size remains low.
+
+## Testing and Quality Checks
+
+Before submission, run:
+
+```bash
+npm run check
+```
+
+Manual checks performed or recommended:
+
+- desktop and mobile responsive layout
+- dark/light theme persistence after reload
+- visitor name save and clear behavior
+- GitHub API loading, partial failure handling, search, and filters
+- contact form validation for empty, invalid, and valid inputs
+- Lighthouse check in incognito using `npm run preview`
+- reduced-motion behavior for animation-sensitive users
+
+## Deployment
+
+The project is configured for static export with:
+
+```text
+next.config.mjs
+```
+
+CI runs type checking, linting, and build validation. The GitHub Pages workflow
+builds the static `out/` folder and deploys it when the repository is pushed to
+`main` or `master`.
+
+Live deployment link: not added yet. Add the final GitHub Pages or Vercel URL
+here after deployment.
 
 ## AI Usage Summary
 
-AI was used as a support tool for planning the modernization, converting the
-static portfolio behavior into React state, and updating documentation. The
-suggestions were reviewed and adjusted manually so the final project remains
-understandable and aligned with the assignment requirements. Full details are
-in `docs/ai-usage-report.md`.
+ChatGPT/Codex was used as a development assistant for planning, refactoring,
+debugging, documentation, performance review, and CI/CD setup. Suggestions were
+reviewed and modified before being kept. The full AI usage report is in:
+
+```text
+docs/ai-usage-report.md
+```

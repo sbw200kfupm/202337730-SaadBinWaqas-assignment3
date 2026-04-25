@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ContactForm } from "@/components/ContactForm";
 import { GitHubRepos } from "@/components/GitHubRepos";
 import { HeroBeams } from "@/components/HeroBeams";
@@ -24,6 +25,7 @@ export default function Home() {
           <div className="header-controls">
             <nav className="site-nav" aria-label="Primary">
               <a href="#about">About</a>
+              <a href="#research">Research</a>
               <a href="#github">GitHub</a>
               <a href="#contact">Contact</a>
             </nav>
@@ -43,6 +45,33 @@ export default function Home() {
                 on measurable results and clean engineering.
               </p>
               <VisitorGreeting />
+            </div>
+          </div>
+        </section>
+
+        <section id="research" className="section research-section">
+          <div className="container research-grid">
+            <div className="research-media">
+              <Image
+                src="/assets/research/bone-disease-detection-research.jpg"
+                alt="Bone disease detection and tumor classification research visual"
+                width={762}
+                height={525}
+                loading="lazy"
+              />
+            </div>
+            <div className="research-content">
+              <p className="section-kicker">2025</p>
+              <h2>Bone Disease Detection / Tumor Classification Research</h2>
+              <p className="muted">
+                Computer vision research focused on tumor classification accuracy and explainability
+                in medical imaging. Published in JURI.
+              </p>
+              <div className="tag-list" aria-label="Research technologies">
+                <span className="tag">PyTorch</span>
+                <span className="tag">Computer Vision</span>
+                <span className="tag">CAM/Grad-CAM style explainability</span>
+              </div>
             </div>
           </div>
         </section>

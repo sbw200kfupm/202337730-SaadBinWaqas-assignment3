@@ -2,144 +2,163 @@
 
 ## Overview
 
-This portfolio is now a React, Next.js, and TypeScript application. It keeps
-the behavior from the earlier static assignment but organizes the logic into a
-typed component structure that is easier to maintain and deploy.
+This portfolio is a statically exported Next.js application with a React and
+TypeScript codebase. It is organized around a server-rendered page with focused
+client-side components only where browser interaction is needed. The goal is to
+keep the site polished and responsive while still satisfying the assignment
+requirements for API integration, state management, documentation, and
+professional quality.
 
-The old static files remain in the repository as a reference. The primary
-application source is:
+## Source Structure
 
-- `app/layout.tsx` for the page shell and metadata
-- `app/page.tsx` for the server-rendered home route and static page sections
-- `app/globals.css` for global styling and themes
-- `components/ThemeToggle.tsx`, `VisitorGreeting.tsx`,
-  `GitHubRepos.tsx`, `ContactForm.tsx`, and `HeroBeams.tsx` for focused
-  client-side behavior
-- `data/portfolio.ts` for GitHub account configuration
+- `app/layout.tsx` defines metadata, viewport settings, and the default dark theme.
+- `app/page.tsx` renders the main page sections: hero, research, GitHub projects, contact, and footer.
+- `app/globals.css` contains the responsive layout, metallic grey theme, component styling, and accessibility states.
+- `components/ThemeToggle.tsx` handles theme persistence.
+- `components/VisitorGreeting.tsx` handles the time-based greeting and saved visitor name.
+- `components/GitHubRepos.tsx` fetches and filters GitHub repository data.
+- `components/ContactForm.tsx` validates the contact form.
+- `components/HeroBeams.tsx` lazy-loads the optional Three.js background.
+- `components/Beams.tsx` contains the WebGL beam effect implementation.
+- `data/portfolio.ts` stores GitHub account configuration.
+- `public/assets/research/` stores the compressed research image used by the site.
 
-## Main Features
+## Application Sections
 
-- Time-based greeting in the hero section.
-- Visitor name saving and clearing with `localStorage`.
-- Dark theme by default, with a light theme toggle and saved preference.
-- GitHub repository loading from the public GitHub REST API for two accounts.
-- GitHub project search and filtering by account and language.
-- Contact form validation with field-level and form-level feedback.
-- Responsive layout for desktop, tablet, and mobile screens.
-- Lazy-loaded hero background effect for larger screens only.
-- Static export support for GitHub Pages deployment.
+### Hero
 
-## Server and Client Component Structure
+The hero introduces the portfolio as an AI/ML and full-stack developer profile.
+It uses a centered layout, short professional copy, visitor personalization,
+and a call-to-action linking to GitHub projects. The optional beam background is
+decorative and is hidden from assistive technology.
 
-The page is intentionally split between server-rendered content and small
-client components. Static layout, headings, explanatory text, and footer
-content are rendered by `app/page.tsx` as a server component. Only the parts
-that need browser APIs or interaction use `"use client"`.
+### Research
 
-This reduces hydration work compared with making the whole page one large
-client component.
+The Research section presents the 2025 Bone Disease Detection / Tumor
+Classification research project. It includes a compressed research image,
+publication note, and technology tags for PyTorch, computer vision, and
+CAM/Grad-CAM style explainability.
 
-## React State Management
+### GitHub Projects
 
-The focused client components use React state for the active UI values:
+The GitHub section fetches repositories from:
 
-- `ThemeToggle` stores the current light or dark theme.
-- `VisitorGreeting` manages the saved welcome message.
-- `GitHubRepos` manages repository data and API loading state.
-- `GitHubRepos` also manages the repository search query, account filter, and
-  language filter.
-- `ContactForm` manages form fields, field errors, and form status.
+- `sbw200kfupm`
+- `sbw200`
 
-Derived values, such as the greeting text and sorted GitHub repository list,
-are kept close to the components that use them so the code stays clear.
+Each account is requested independently:
 
-## Data Handling
+```text
+https://api.github.com/users/{username}/repos?sort=updated&per_page=12
+```
 
-GitHub account names are stored in `data/portfolio.ts` instead of being
-embedded in the GitHub component. This keeps configuration separate from the
-component logic.
+The component merges successful responses, sorts repositories by latest push
+date, and keeps up to 24 repositories. Each card displays the account,
+language, star count, description, and repository link.
 
-Browser preferences are saved with `localStorage`:
+The section includes:
 
-1. When the component loads, it reads saved theme and visitor name values.
-2. When the user changes the theme or saves a name, the new value is stored.
-3. On the next visit, the saved values are restored automatically.
+- text search by name or description
+- account filter
+- language filter
+- live count of filtered versus loaded repositories
+- graceful empty state when filters match nothing
+- graceful partial failure handling if one account cannot be loaded
 
-## API Integration
+### Contact
 
-The GitHub section requests repositories for both configured accounts:
+The contact form is client-side only and does not submit to a backend.
+Validation rules are intentionally clear:
 
-`https://api.github.com/users/{username}/repos?sort=updated&per_page=4`
+- name must be at least 2 characters
+- email must match a basic email format
+- message must be at least 10 characters
 
-The app fetches the latest repositories from each account, merges the results,
-sorts them by latest push date, and displays up to eight cards. Each card shows
-the source account, language, stars, description, and a link to GitHub. If one
-account is unavailable, the page still shows repositories from the account that
-loaded successfully.
+The form shows field-level errors, a form-level status message, and focuses the
+first invalid field after submission.
 
-The repository list can be narrowed with a search box, an account filter, and a
-language filter. These controls run on the already-loaded repository list, so
-they do not make extra API requests.
+## State Management
 
-## Form Validation
+State is kept in small client components instead of one large page-level client
+component.
 
-The contact form is controlled by React state and validated on submit.
+- `ThemeToggle` stores `portfolio-theme` in `localStorage`.
+- `VisitorGreeting` stores `portfolio-visitor-name` in `localStorage`.
+- `GitHubRepos` stores loaded repositories, loading status, search query, and filters.
+- `ContactForm` stores controlled form fields, validation errors, and submit status.
+- `HeroBeams` stores whether the optional background should load.
 
-Validation rules:
+This structure keeps static content server-rendered and limits hydration to the
+interactive parts of the page.
 
-- Name must contain at least 2 characters.
-- Email must match a basic email pattern.
-- Message must contain at least 10 characters.
+## Error Handling
 
-When a field is invalid, the page sets an error message, marks the field with
-`aria-invalid`, and moves focus to the first invalid field. A success message
-appears when all inputs pass validation.
+The GitHub integration uses `Promise.allSettled` so one failed account does not
+break the whole section. If both accounts fail or no repositories are returned,
+the interface shows a friendly status message instead of leaving the area
+blank.
 
-## Styling and Accessibility
+The contact form prevents invalid submission and gives specific feedback near
+each invalid field. Browser storage operations are wrapped in `try/catch` so
+private browsing or storage restrictions do not crash the app.
 
-The design uses CSS variables for theme colors and keeps layout rules in
-`app/globals.css`. The page includes:
+## Accessibility
 
-- a skip link for keyboard users
-- semantic sections and headings
-- accessible labels and live regions for changing status messages
+Accessibility considerations include:
+
+- semantic `section`, heading, form, and navigation structure
+- skip link for keyboard users
 - visible focus styles
-- responsive grid layouts
-- a reduced-motion media query
+- `aria-live` regions for changing GitHub, greeting, filter, and form messages
+- labels connected to form fields and filters
+- `aria-invalid` on invalid form controls
+- decorative background marked with `aria-hidden`
+- reduced-motion support for users who prefer less animation
+
+## Responsive Design
+
+The layout uses CSS Grid and flexible containers. Desktop views use multi-column
+sections where useful, while tablet and mobile views collapse to a single
+column. Controls such as GitHub filters and contact fields expand to full width
+on smaller screens.
 
 ## Performance Notes
 
-- SVG assets are lightweight and served from `public/assets/images/`.
-- The GitHub request is limited to four repositories per account.
-- Static page sections are rendered as server components, while only small
-  interactive islands hydrate on the client.
-- The optional Three.js hero background is dynamically imported with server-side
-  rendering disabled, waits until the browser is idle, does not render on
-  smaller screens, does not render for reduced-motion users, and unmounts when
-  the tab is hidden. It can also be disabled with
-  `NEXT_PUBLIC_ENABLE_BEAMS=false`.
-- `next.config.mjs` uses `output: "export"` so the built site can be deployed
-  as static files.
+- Static content is rendered by `app/page.tsx` as a server component.
+- Only small client components hydrate.
+- The research image is compressed and served from `public/assets/research/`.
+- Removed unused public placeholder/project images from the active Next app.
+- GitHub requests are bounded to 12 repositories per account.
+- The Three.js background is loaded only after desktop/motion checks pass, then after idle time and an additional delay.
+- The Beams effect is disabled on small screens and for reduced-motion users.
+- `NEXT_PUBLIC_ENABLE_BEAMS=false` disables the effect completely for testing or deployment.
+- `next.config.mjs` uses `output: "export"` for static hosting.
 
 ## CI/CD
 
-The repository includes two GitHub Actions workflows:
+The repository includes two workflows:
 
-- `.github/workflows/ci.yml` installs dependencies, type checks, lints, and
-  builds the app on pushes and pull requests.
-- `.github/workflows/deploy-github-pages.yml` builds the static export and
-  deploys the `out/` directory to GitHub Pages.
+- `.github/workflows/ci.yml` runs install, typecheck, lint, and build.
+- `.github/workflows/deploy-github-pages.yml` builds and deploys the static `out/` directory to GitHub Pages.
 
 The deployment workflow sets `NEXT_PUBLIC_BASE_PATH` to the repository name so
-generated links and assets work correctly under a GitHub Pages project path.
+assets work correctly when hosted under a GitHub Pages project path.
 
-## Testing Notes
+## Testing Checklist
 
-Recommended checks before submission:
+Before submission, run:
 
-- run `npm run check`
-- verify theme switching and reload persistence
-- save and clear a visitor name
-- confirm GitHub repositories load or show a graceful fallback
-- submit invalid and valid contact form values
-- check desktop and mobile layouts
+```bash
+npm run check
+```
+
+Manual testing checklist:
+
+- load the site in production preview
+- verify desktop and mobile layouts
+- toggle theme and reload
+- save and clear visitor name
+- test GitHub loading, search, account filter, and language filter
+- test contact form with empty, invalid, and valid values
+- test with `NEXT_PUBLIC_ENABLE_BEAMS=false`
+- run Lighthouse in incognito using production preview

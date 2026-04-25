@@ -100,6 +100,7 @@ float cnoise(vec3 P){
 }
 `;
 
+// The beam surface uses a custom physical material so the planes can bend over time.
 function extendMaterial(
   BaseMaterial: typeof THREE.MeshStandardMaterial,
   cfg: ExtendMaterialConfig

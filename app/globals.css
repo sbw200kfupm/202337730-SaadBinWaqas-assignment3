@@ -124,7 +124,6 @@ textarea {
 .site-nav,
 .hero-actions,
 .visitor-actions,
-.project-filters,
 .github-toolbar,
 .repo-meta,
 .footer-inner {
@@ -288,6 +287,7 @@ textarea {
 
 .hero h1,
 .projects h2,
+.research-section h2,
 .github-section h2,
 .contact h2 {
   margin: 0 0 12px;
@@ -301,6 +301,7 @@ textarea {
 }
 
 .projects h2,
+.research-section h2,
 .github-section h2,
 .contact h2 {
   font-size: clamp(1.8rem, 3vw, 2.5rem);
@@ -375,7 +376,6 @@ textarea {
 }
 
 .visitor-panel,
-.project-card,
 .repo-card,
 .contact-form {
   border: 1px solid var(--border);
@@ -425,20 +425,6 @@ textarea {
   font-weight: 700;
 }
 
-.project-controls {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 18px;
-}
-
-.project-filters {
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 24px;
-}
-
 .filter-btn {
   padding: 10px 14px;
   border-color: var(--border);
@@ -466,7 +452,6 @@ textarea {
   font-weight: 800;
 }
 
-.project-grid,
 .github-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -474,33 +459,14 @@ textarea {
   margin-top: 30px;
 }
 
-.project-card {
-  overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.project-card:hover,
-.project-card:focus-within {
-  transform: translateY(-3px);
-}
-
-.project-body,
 .repo-card,
 .contact-form {
   padding: 20px;
 }
 
-.project-body h3,
 .repo-card h3 {
   margin: 0 0 10px;
   font-size: 1.18rem;
-}
-
-.project-meta {
-  margin: 0 0 10px;
-  color: var(--muted);
-  font-size: 0.92rem;
-  font-weight: 800;
 }
 
 .tag-list {
@@ -518,6 +484,45 @@ textarea {
   color: var(--accent);
   font-size: 0.85rem;
   font-weight: 800;
+}
+
+.research-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(280px, 0.92fr);
+  gap: 30px;
+  align-items: center;
+}
+
+.research-media {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.research-media img {
+  width: 100%;
+  height: auto;
+}
+
+.research-content {
+  display: grid;
+  gap: 14px;
+}
+
+.research-content h2,
+.research-content p {
+  margin: 0;
+}
+
+.section-kicker {
+  margin: 0;
+  color: var(--accent);
+  font-size: 0.95rem;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .github-toolbar {
@@ -549,6 +554,16 @@ textarea {
   background: var(--accent-soft);
   color: var(--accent);
   font-weight: 800;
+}
+
+.filter-empty {
+  margin: 18px 0 0;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--muted);
+  font-weight: 700;
 }
 
 .repo-card p {
@@ -656,7 +671,7 @@ textarea {
 @media (max-width: 900px) {
   .hero-grid,
   .contact-grid,
-  .project-grid,
+  .research-grid,
   .github-grid,
   .github-controls {
     grid-template-columns: 1fr;
