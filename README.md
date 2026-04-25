@@ -138,6 +138,17 @@ CI runs type checking, linting, and build validation. The GitHub Pages workflow
 builds the static `out/` folder and deploys it when the repository is pushed to
 `main` or `master`.
 
+For Netlify, the included `netlify.toml` sets:
+
+```text
+Build command: npm run build
+Publish directory: out
+```
+
+This matters because the repository still contains the earlier root
+`index.html` as reference material. Publishing the repository root will show the
+old static version instead of the Next.js app.
+
 Live deployment link: not added yet. Add the final GitHub Pages or Vercel URL
 here after deployment.
 
