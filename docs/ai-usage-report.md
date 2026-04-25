@@ -6,8 +6,8 @@
   - Reviewed the Assignment 2 portfolio before changes were made.
   - Suggested a simple Assignment 3 feature set that stayed within plain HTML,
     CSS, and JavaScript and matched the expected level of the course.
-  - Helped refine the JavaScript logic for project filtering and sorting,
-    visitor state saving, GitHub API loading, and form validation.
+  - Helped refine the JavaScript logic for visitor state saving, GitHub API
+    loading, and form validation.
   - Helped modernize the project for Assignment 4 by converting the static
     behavior into a React, Next.js, and TypeScript structure.
   - Helped set up CI/CD workflow files for type checking, linting, building,
@@ -31,9 +31,9 @@ AI support was used in a limited and supervised way for the following tasks:
 - identifying how to extend the previous portfolio without changing the basic
   structure too much
 - selecting an API feature that fit naturally into a portfolio website
-- planning project controls that combine filtering and sorting
-- improving user feedback in the GitHub section, project controls, and contact
-  form
+- deciding to simplify the portfolio by using GitHub repositories as the main
+  project list
+- improving user feedback in the GitHub section and contact form
 - checking that the documentation clearly explains the implemented features and
   AI use
 - planning how to keep the original simple assignment structure while adding

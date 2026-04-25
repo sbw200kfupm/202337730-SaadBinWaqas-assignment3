@@ -5,7 +5,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Saad Bin Waqas | Portfolio",
   description:
-    "A modern React and Next.js portfolio with project filtering, GitHub API data, saved preferences, and contact validation."
+    "A modern React and Next.js portfolio with GitHub API data, saved preferences, and contact validation."
 };
 
 export const viewport: Viewport = {
@@ -19,7 +19,7 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="dark">
       <body>{children}</body>
     </html>
   );

@@ -7,13 +7,14 @@ type Theme = "light" | "dark";
 const themeKey = "portfolio-theme";
 
 export function ThemeToggle() {
-  const [theme, setTheme] = useState<Theme>("light");
+  const [theme, setTheme] = useState<Theme>("dark");
 
   useEffect(() => {
     try {
-      const savedTheme = localStorage.getItem(themeKey) === "dark" ? "dark" : "light";
-      setTheme(savedTheme);
-      document.documentElement.setAttribute("data-theme", savedTheme);
+      const savedTheme = localStorage.getItem(themeKey);
+      const nextTheme = savedTheme === "light" ? "light" : "dark";
+      setTheme(nextTheme);
+      document.documentElement.setAttribute("data-theme", nextTheme);
     } catch (error) {
       console.error("Saved theme preference could not be loaded.", error);
     }

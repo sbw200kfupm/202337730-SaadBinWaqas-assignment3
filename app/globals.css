@@ -1,15 +1,16 @@
 :root {
-  --bg: #f7f8fb;
+  --bg: #f5f6f8;
   --surface: #ffffff;
-  --surface-strong: #eef6f5;
-  --text: #182124;
-  --muted: #5e6a70;
-  --accent: #176b68;
-  --accent-strong: #0f5654;
-  --accent-soft: #dff0ee;
-  --focus: #4f46e5;
-  --border: #dfe5e8;
-  --input-border: #cfd8dc;
+  --surface-strong: #eceff3;
+  --text: #17191d;
+  --muted: #626a75;
+  --accent: #626b77;
+  --accent-strong: #434a54;
+  --accent-soft: #e2e5ea;
+  --accent-contrast: #ffffff;
+  --focus: #a9b3c1;
+  --border: #d9dde3;
+  --input-border: #c9cfd8;
   --success-bg: #e8f7ef;
   --success-text: #1f6b3b;
   --error-bg: #fff0ee;
@@ -19,17 +20,18 @@
 }
 
 [data-theme="dark"] {
-  --bg: #111819;
-  --surface: #1b2628;
-  --surface-strong: #213235;
-  --text: #f3f6f5;
-  --muted: #b7c3c5;
-  --accent: #7bd3c7;
-  --accent-strong: #9ce3da;
-  --accent-soft: #263f42;
-  --focus: #a5b4fc;
-  --border: #304246;
-  --input-border: #40565b;
+  --bg: #101215;
+  --surface: #1a1d22;
+  --surface-strong: #252a31;
+  --text: #f1f3f6;
+  --muted: #b7bec8;
+  --accent: #c5cad2;
+  --accent-strong: #e3e7ed;
+  --accent-soft: #2d333b;
+  --accent-contrast: #121417;
+  --focus: #d8dde5;
+  --border: #333942;
+  --input-border: #464e59;
   --success-bg: #183a2a;
   --success-text: #baf0ce;
   --error-bg: #432422;
@@ -92,7 +94,7 @@ textarea {
   padding: 8px 12px;
   border-radius: 6px;
   background: var(--accent);
-  color: #fff;
+  color: var(--accent-contrast);
 }
 
 .skip-link:focus {
@@ -141,7 +143,7 @@ textarea {
   place-items: center;
   border-radius: 8px;
   background: var(--accent);
-  color: #fff;
+  color: var(--accent-contrast);
   font-weight: 800;
 }
 
@@ -263,7 +265,6 @@ textarea {
 .hero-grid,
 .contact-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 40px;
   align-items: start;
 }
@@ -271,6 +272,18 @@ textarea {
 .hero-grid {
   position: relative;
   z-index: 1;
+  grid-template-columns: minmax(0, 760px);
+  justify-content: center;
+  text-align: center;
+}
+
+.contact-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.hero-content {
+  display: grid;
+  justify-items: center;
 }
 
 .hero h1,
@@ -283,7 +296,7 @@ textarea {
 }
 
 .hero h1 {
-  max-width: 11ch;
+  max-width: 13ch;
   font-size: clamp(2.4rem, 5vw, 4rem);
 }
 
@@ -300,6 +313,7 @@ textarea {
 
 .hero-actions,
 .visitor-actions {
+  justify-content: center;
   gap: 12px;
   margin-top: 22px;
 }
@@ -314,7 +328,7 @@ textarea {
 
 .btn.primary {
   background: var(--accent);
-  color: #fff;
+  color: var(--accent-contrast);
 }
 
 .btn.primary:hover,
@@ -360,7 +374,6 @@ textarea {
   margin-bottom: 12px;
 }
 
-.hero-card,
 .visitor-panel,
 .project-card,
 .repo-card,
@@ -371,22 +384,23 @@ textarea {
   box-shadow: var(--shadow);
 }
 
-.hero-card,
 .visitor-panel {
   padding: 20px;
 }
 
 .visitor-panel {
+  width: min(100%, 560px);
   margin-top: 24px;
+  text-align: left;
 }
 
-.visitor-panel h2,
-.guide-card h2 {
+.visitor-panel h2 {
   margin: 0 0 8px;
   font-size: 1.1rem;
 }
 
 .visitor-input,
+.search-input,
 .select-input,
 .contact-form input,
 .contact-form textarea {
@@ -398,6 +412,7 @@ textarea {
 }
 
 .visitor-input,
+.search-input,
 .select-input {
   padding: 11px 12px;
 }
@@ -408,30 +423,6 @@ textarea {
   color: var(--muted);
   font-size: 0.95rem;
   font-weight: 700;
-}
-
-.quick-list {
-  display: grid;
-  gap: 8px;
-  margin: 18px 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.guide-card {
-  margin-top: 22px;
-  padding: 18px;
-  border-radius: 8px;
-  background: var(--surface-strong);
-}
-
-.guide-list {
-  margin: 0;
-  padding-left: 18px;
-}
-
-.guide-list li + li {
-  margin-top: 8px;
 }
 
 .project-controls {
@@ -459,7 +450,7 @@ textarea {
 .filter-btn.active {
   border-color: var(--accent);
   background: var(--accent);
-  color: #fff;
+  color: var(--accent-contrast);
 }
 
 .sort-control {
@@ -534,6 +525,21 @@ textarea {
   justify-content: flex-end;
   gap: 14px;
   margin-top: 24px;
+}
+
+.github-controls {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) minmax(160px, 220px) minmax(160px, 220px);
+  gap: 14px;
+  align-items: end;
+  margin-top: 24px;
+}
+
+.github-search,
+.github-filter {
+  display: grid;
+  gap: 8px;
+  font-weight: 800;
 }
 
 .github-status {
@@ -651,7 +657,8 @@ textarea {
   .hero-grid,
   .contact-grid,
   .project-grid,
-  .github-grid {
+  .github-grid,
+  .github-controls {
     grid-template-columns: 1fr;
   }
 
@@ -714,7 +721,7 @@ textarea {
   }
 
   .hero h1 {
-    max-width: 100%;
+    max-width: 14ch;
   }
 
   .hero-beams {

@@ -10,10 +10,10 @@ Next.js `app/`, `components/`, and `data/` folders.
 The portfolio includes:
 
 - an About section with a time-based greeting
-- project filtering and sorting powered by React state
-- a GitHub section that loads public repository data from the GitHub API
+- a GitHub Projects section that loads public repository data from two GitHub accounts
+- search and filters for narrowing GitHub projects by text, account, and language
 - a Contact section with client-side validation and feedback
-- a dark mode and light mode toggle saved with `localStorage`
+- dark mode by default, with a light mode toggle saved with `localStorage`
 - a visitor name feature saved with `localStorage`
 - an optional lazy-loaded Three.js hero background for larger screens
 - CI/CD workflows for validation and GitHub Pages deployment
@@ -30,9 +30,9 @@ The portfolio includes:
 ## Project Structure
 
 - `app/` - Next.js pages, layout, and global styles
-- `components/` - small client components for theme, visitor name, projects,
-  GitHub data, contact validation, and the optional Beams background
-- `data/portfolio.ts` - typed project data and GitHub username
+- `components/` - small client components for theme, visitor name, GitHub data,
+  contact validation, and the optional Beams background
+- `data/portfolio.ts` - GitHub account configuration
 - `public/assets/images/` - image assets served by Next.js
 - `index.html`, `css/`, `js/` - original static version kept for reference
 - `docs/` - AI usage report and technical documentation
@@ -72,7 +72,7 @@ npm run check      # typecheck, lint, and build
 The GitHub section uses the public GitHub API and does not require a token for
 basic public repository data.
 
-To change the displayed account, update `githubUsername` in
+To change the displayed accounts, update `githubUsernames` in
 `data/portfolio.ts`.
 
 ## Hero Background Toggle

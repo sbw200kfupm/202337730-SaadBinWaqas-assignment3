@@ -84,8 +84,8 @@ export function VisitorGreeting() {
         {greeting}
       </p>
       <div className="hero-actions">
-        <a className="btn primary" href="#projects">
-          View Projects
+        <a className="btn primary" href="#github">
+          View GitHub Projects
         </a>
         <a className="btn ghost" href="#contact">
           Contact Me

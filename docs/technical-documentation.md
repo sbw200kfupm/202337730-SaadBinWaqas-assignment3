@@ -13,17 +13,17 @@ application source is:
 - `app/page.tsx` for the server-rendered home route and static page sections
 - `app/globals.css` for global styling and themes
 - `components/ThemeToggle.tsx`, `VisitorGreeting.tsx`,
-  `ProjectExplorer.tsx`, `GitHubRepos.tsx`, `ContactForm.tsx`, and
-  `HeroBeams.tsx` for focused client-side behavior
-- `data/portfolio.ts` for typed project data and configuration
+  `GitHubRepos.tsx`, `ContactForm.tsx`, and `HeroBeams.tsx` for focused
+  client-side behavior
+- `data/portfolio.ts` for GitHub account configuration
 
 ## Main Features
 
 - Time-based greeting in the hero section.
 - Visitor name saving and clearing with `localStorage`.
-- Light and dark theme toggle with saved preference.
-- Project filtering and sorting using React state.
-- GitHub repository loading from the public GitHub REST API.
+- Dark theme by default, with a light theme toggle and saved preference.
+- GitHub repository loading from the public GitHub REST API for two accounts.
+- GitHub project search and filtering by account and language.
 - Contact form validation with field-level and form-level feedback.
 - Responsive layout for desktop, tablet, and mobile screens.
 - Lazy-loaded hero background effect for larger screens only.
@@ -45,18 +45,19 @@ The focused client components use React state for the active UI values:
 
 - `ThemeToggle` stores the current light or dark theme.
 - `VisitorGreeting` manages the saved welcome message.
-- `ProjectExplorer` controls the project filter and sort order.
 - `GitHubRepos` manages repository data and API loading state.
+- `GitHubRepos` also manages the repository search query, account filter, and
+  language filter.
 - `ContactForm` manages form fields, field errors, and form status.
 
-Derived values, such as the visible project list and greeting text, are
-computed with `useMemo` so the code stays clear and avoids repeated logic.
+Derived values, such as the greeting text and sorted GitHub repository list,
+are kept close to the components that use them so the code stays clear.
 
 ## Data Handling
 
-Project data is stored in `data/portfolio.ts` instead of being embedded inside
-HTML. This keeps the page component smaller and makes each project object
-consistent through TypeScript types.
+GitHub account names are stored in `data/portfolio.ts` instead of being
+embedded in the GitHub component. This keeps configuration separate from the
+component logic.
 
 Browser preferences are saved with `localStorage`:
 
@@ -66,14 +67,19 @@ Browser preferences are saved with `localStorage`:
 
 ## API Integration
 
-The GitHub section requests:
+The GitHub section requests repositories for both configured accounts:
 
 `https://api.github.com/users/{username}/repos?sort=updated&per_page=4`
 
-The app shows a loading message, displays repository cards on success, and
-shows a friendly fallback message if the request fails or returns no data.
-React automatically escapes repository text, which avoids injecting untrusted
-HTML into the page.
+The app fetches the latest repositories from each account, merges the results,
+sorts them by latest push date, and displays up to eight cards. Each card shows
+the source account, language, stars, description, and a link to GitHub. If one
+account is unavailable, the page still shows repositories from the account that
+loaded successfully.
+
+The repository list can be narrowed with a search box, an account filter, and a
+language filter. These controls run on the already-loaded repository list, so
+they do not make extra API requests.
 
 ## Form Validation
 
@@ -104,9 +110,7 @@ The design uses CSS variables for theme colors and keeps layout rules in
 ## Performance Notes
 
 - SVG assets are lightweight and served from `public/assets/images/`.
-- Project images use native lazy loading.
-- The project data is static and typed, avoiding unnecessary runtime parsing.
-- The GitHub request is limited to four repositories.
+- The GitHub request is limited to four repositories per account.
 - Static page sections are rendered as server components, while only small
   interactive islands hydrate on the client.
 - The optional Three.js hero background is dynamically imported with server-side
@@ -136,7 +140,6 @@ Recommended checks before submission:
 - run `npm run check`
 - verify theme switching and reload persistence
 - save and clear a visitor name
-- test all project filters and sort options
 - confirm GitHub repositories load or show a graceful fallback
 - submit invalid and valid contact form values
 - check desktop and mobile layouts
